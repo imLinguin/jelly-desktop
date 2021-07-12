@@ -19,7 +19,10 @@ function createMainWindow() {
         title: "Jellyfin Desktop",
         width: 1000,
         height: 600,
+        resizable: true,
         minimizable: true,
+        frame: true,
+        icon: "../images/favicon.png",
         webPreferences: {
             nodeIntegration: false,
             devTools: true,

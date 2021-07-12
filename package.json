@@ -27,6 +27,7 @@
     "electron-settings": "^4.0.2"
   },
   "build": {
+    "icon": "./images/favicon.png",
     "appId": "linguin.jd",
     "productName": "Jellyfin Desktop",
     "files":["./build/*.js","./src/page/*"],
