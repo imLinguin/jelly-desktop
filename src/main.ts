@@ -1,5 +1,6 @@
 import { BrowserWindow, app } from "electron"
 import * as settings from "electron-settings"
+import * as path from "path"
 let window: BrowserWindow;
 
 const isWindows = process.platform === "win32"
@@ -31,12 +32,15 @@ function createMainWindow() {
 
 app.whenReady().then(()=>{
     createMainWindow()
-    const address = settings.get("address")
-    if (address) 
-        window.loadURL("http://10.8.0.1:8096")
-    else
-        //Todo
-        console.log("Landing page")
+    const address = settings.getSync("address")
+    if (address) {
+        window.loadURL(address.toString())
+    }
+    else {
+        let fpath = path.join(__dirname,"..","src","page","index.html")
+        console.log(fpath);
+        window.loadFile(fpath)
+    }
     window.setMenuBarVisibility(false)
     window.show()
 })
