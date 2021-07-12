@@ -6,7 +6,7 @@
   "scripts": {
     "start": "run-s build:ts start:electron",
     "start:electron": "electron build/main.js",
-    "build":"run-s build:ts build:electron",
+    "build": "run-s build:ts build:electron",
     "build:ts": "tsc -b src/",
     "build:electron": "electron-builder"
   },
@@ -30,7 +30,10 @@
     "icon": "./images/favicon.png",
     "appId": "linguin.jd",
     "productName": "Jellyfin Desktop",
-    "files":["./build/*.js","./src/page/*"],
+    "files": [
+      "./build/*.js",
+      "./src/page/*"
+    ],
     "linux": {
       "target": [
         "AppImage",

@@ -7,6 +7,13 @@ body {
     sans-serif;
 }
 
+main {
+  max-width: 600px;
+  width: 80%;
+  margin: auto;
+  margin-top: calc(50vh - 200px);
+}
+
 header {
   width: 100%;
   height: 54px;
@@ -27,9 +34,8 @@ header {
 
 h1 {
   color: rgba(255, 255, 255, 0.8);
-  margin-top: 155px;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 1.8em;
 }
 
 input::-webkit-outer-spin-button,
@@ -60,39 +66,43 @@ input {
 .url-label,
 .port-label {
   color: rgba(255, 255, 255, 0.7);
+  width: 0;
+}
+
+.url-label {
+  top: -40px;
+  position: relative;
+}
+
+.port-label {
+  position: relative;
+  top: -40px;
+  left: 13px;
+}
+
+#port, #url {
+  border: solid 2px #292929;
 }
 
 #url {
-  width: 344px;
+  width: calc(70% - 14px);
   margin-right: 13px;
 }
 
 #port {
-  width: 124px;
+  width: calc(30% - 14px);
   margin-left: 13px;
 }
 
 #port:focus, #url:focus {
-    box-shadow: 0 0 0 2px #00A4DC;
-}
-
-.url-label {
-  position: absolute;
-  margin-top: -71px;
-  margin-right: 499px;
-}
-
-.port-label {
-  position: absolute;
-  margin-top: -71px;
-  margin-left: 285px;
+    border: solid 2px #00A4DC;
 }
 
 #connect-button {
-  width: 518px;
+  width: 100%;
   height: 40px;
-  position: absolute;
-  margin-top: 182px;
+  margin: 0;
+  margin-top: 50px;
   outline: none;
   border: none;
   border-radius: 4px;

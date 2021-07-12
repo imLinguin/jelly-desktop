@@ -10,7 +10,7 @@ if(navigator.language == "pl") {
 }
 
 else {
-    document.getElementById("heading-text").innerHTML = `Connect to the server`;
+    document.getElementById("heading-text").innerHTML = `Connect to Server`;
     document.getElementById("url").title = "Fill in this field."
     document.getElementById("port").title = "Fill in this field.";
     document.getElementById("button-text").innerHTML = "Connect";
