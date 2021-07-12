@@ -24,9 +24,9 @@ function createMainWindow() {
         frame: true,
         icon: "../images/favicon.png",
         webPreferences: {
-            nodeIntegration: false,
+            nodeIntegration: true,
             devTools: true,
-            contextIsolation: true,
+            contextIsolation: false,
             backgroundThrottling: false
         }
     })
