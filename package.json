@@ -1,7 +1,7 @@
 {
-  "name": "jellyfin-desktop",
+  "name": "jelly-desktop",
   "version": "1.0.0",
-  "description": "Simple desktop client for Jellyfin",
+  "description": "Simple community made desktop client for Jellyfin",
   "main": "build/main.js",
   "scripts": {
     "start": "run-s build:ts start:electron",
@@ -14,8 +14,8 @@
     "Electron",
     "Jellyfin"
   ],
-  "author": "Paweł Lidwin",
-  "license": "ISC",
+  "author": "Paweł Lidwin, Aleksander Baran",
+  "license": "GPL-3.0",
   "devDependencies": {
     "@types/node": "^16.3.1",
     "electron": "^13.1.6",
@@ -38,10 +38,11 @@
       "target": [
         "AppImage",
         "deb"
-      ]
+      ],
+      "category":"Network"
     },
     "appImage": {
-      "artifactName": "JD-${version}.${ext}"
+      "artifactName": "JellyD-${version}.${ext}"
     }
   }
 }
