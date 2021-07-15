@@ -17,11 +17,11 @@ if (navigator.language == "pl") {
 const urlInput = document.getElementById("url");
 const portInput = document.getElementById("port");
 
-function setInputs() {
-  if (window.ServerUrl) {
-    const url = window.ServerUrl.split(":");
-    urlInput.value = "http://" + url[1].slice(2,url[1].length);
-    portInput.value = url[2];
+function setInputs(url, port) {
+  console.log(url,port);
+  if (url) {
+    urlInput.value = url;
+    portInput.value = port || 8096;
   }
   else {
     portInput.value = 8096
@@ -39,4 +39,21 @@ function connectToServer() {
   const tmpurl = `${ip}:${port}`;
 
   require("electron").ipcRenderer.send("connect",tmpurl)
+}
+
+function createDiscovery(servers) {
+  const div = document.getElementById("discovery-container")
+  for (server of servers) {
+    console.log(server);
+    let button = document.createElement("button")
+    button.innerText = server.EndpointAddress
+    button.id = "button-text"
+    button.title = `${server.Address}\n${server.Name}`
+    button.onclick = (e)=>{
+      let text = server.Address;
+      const arr = text.split(":")
+      setInputs(arr[0]+":"+arr[1],arr[2])
+    }
+    div.appendChild(button)
+  }
 }

@@ -14,7 +14,10 @@
     "Electron",
     "Jellyfin"
   ],
-  "author": "Paweł Lidwin, Aleksander Baran",
+  "author": {
+    "name": "Paweł Lidwin",
+    "email": "lidwinpawel@gmail.com"
+  },
   "license": "GPL-3.0",
   "devDependencies": {
     "@types/node": "^16.3.1",
@@ -27,22 +30,26 @@
     "electron-settings": "^4.0.2"
   },
   "build": {
-    "icon": "./images/favicon.png",
     "appId": "linguin.jd",
     "productName": "Jellyfin Desktop",
     "files": [
       "./build/*.js",
-      "./src/page/*"
+      "./src/page/*",
+      "./images/*"
     ],
+    "directories": {
+      "buildResources": "./images/*"
+    },
+    "icon": "images/favicon.png",
     "linux": {
       "target": [
         "AppImage",
         "deb"
       ],
-      "category":"Network"
+      "category": "Network"
     },
     "appImage": {
-      "artifactName": "JellyD-${version}.${ext}"
+      "artifactName": "JellyDesktop-${version}.${ext}"
     }
   }
 }

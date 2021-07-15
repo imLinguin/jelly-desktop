@@ -114,7 +114,23 @@ input {
 }
 
 #button-text {
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#discovery-container {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#discovery-container > button {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  width: 25%;
+  height: 30px;
+  background-color: #00A4DC;
+  cursor: pointer;
 }
