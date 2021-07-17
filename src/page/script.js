@@ -32,7 +32,7 @@ function connectToServer() {
   let port = portInput.value;
 
   if(!ip.match(/http[s]?:\/\//) || !ip || !port) {
-    alert(navigator.language == "pl" ? "Podaj poprawne dane" : "Please provide valid data")  
+    alert(navigator.language == "pl" ? "Podaj poprawne dane" : "Please provide valid data")
     return
   }
 
@@ -43,17 +43,27 @@ function connectToServer() {
 
 function createDiscovery(servers) {
   const div = document.getElementById("discovery-container")
+  const div2 = document.getElementById("discovery-text")
   for (server of servers) {
     console.log(server);
-    let button = document.createElement("button")
+    let button = document.createElement("button");
+    let text = document.createElement("h2");
     button.innerText = server.EndpointAddress
     button.id = "button-text"
-    button.title = `${server.Address}\n${server.Name}`
     button.onclick = (e)=>{
       let text = server.Address;
       const arr = text.split(":")
       setInputs(arr[0]+":"+arr[1],arr[2])
     }
     div.appendChild(button)
+    div2.appendChild(text);
+
+    if (navigator.language == "pl") {
+      document.querySelector("h2").innerHTML = "Wybierz z listy:";
+      button.title = `IP: ${server.Address}\nNazwa: ${server.Name}`
+    } else {
+      document.querySelector("h2").innerHTML = "Choose from the list:";
+      button.title = `IP: ${server.Address}\nName: ${server.Name}`
+    }
   }
 }

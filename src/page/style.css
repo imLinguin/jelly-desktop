@@ -32,10 +32,16 @@ header {
   cursor: pointer;
 }
 
-h1 {
+h1, h2 {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
   font-size: 1.8em;
+}
+
+h2 {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1em;
+  margin-top: 44px;
 }
 
 input::-webkit-outer-spin-button,
@@ -45,7 +51,7 @@ input::-webkit-inner-spin-button {
 }
 
 .inputs {
-  margin-top: 43px;
+  margin-top: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +104,7 @@ input {
     border: solid 2px #00A4DC;
 }
 
-#connect-button {
+#connect-button, #discovery-container > button {
   width: 100%;
   height: 40px;
   margin: 0;
@@ -113,24 +119,28 @@ input {
   cursor: pointer;
 }
 
+#discovery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#discovery-container > button {
+  width: 40%;
+  margin-top: 5px;
+  background-color: rgb(0, 66, 88);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  transition: 0.5s;
+}
+
+#discovery-container > button:hover {
+  background-color: #00A4DC;
+  color: white
+}
+
 #button-text {
   color: white;
   font-size: 15px;
   font-weight: 700;
-}
-
-#discovery-container {
-  margin-top: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-#discovery-container > button {
-  outline: none;
-  border: none;
-  border-radius: 4px;
-  width: 25%;
-  height: 30px;
-  background-color: #00A4DC;
-  cursor: pointer;
 }
