@@ -68,6 +68,11 @@ input {
   padding-left: 8px;
 }
 
+.colon {
+  user-select: none;
+  margin-right: 4px;
+}
+
 .colon,
 .url-label,
 .port-label {
@@ -102,6 +107,10 @@ input {
 
 #port:focus, #url:focus {
     border: solid 2px #00A4DC;
+}
+
+#url:focus ~ .url-label, #port:focus ~ .port-label {
+  color: #00A4DC;
 }
 
 #connect-button, #discovery-container > button {

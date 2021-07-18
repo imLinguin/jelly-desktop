@@ -19,11 +19,11 @@
     <main>
       <h1 id="heading-text"></h1>
       <div class="inputs">
-        <label for="url" class="url-label">IP:</label>
         <input type="url" name="url" id="url" />
+        <label for="url" class="url-label">IP:</label>
         <div class="colon">:</div>
-        <label for="port" class="port-label">Port:</label>
         <input type="number" name="port" id="port" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" />
+        <label for="port" class="port-label">Port:</label>
       </div>
       <button id="connect-button" onclick="connectToServer()">
         <p id="button-text"></p>

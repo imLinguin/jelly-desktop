@@ -48,7 +48,7 @@ function createDiscovery(servers) {
     console.log(server);
     let button = document.createElement("button");
     let text = document.createElement("h2");
-    button.innerText = server.EndpointAddress
+    button.innerText = server.Address.replace(/http(s)?\:\/\//,"")
     button.id = "button-text"
     button.onclick = (e)=>{
       let text = server.Address;
@@ -60,10 +60,10 @@ function createDiscovery(servers) {
 
     if (navigator.language == "pl") {
       document.querySelector("h2").innerHTML = "Wybierz z listy:";
-      button.title = `IP: ${server.Address}\nNazwa: ${server.Name}`
+      button.title = `Nazwa: ${server.Name}`
     } else {
       document.querySelector("h2").innerHTML = "Choose from the list:";
-      button.title = `IP: ${server.Address}\nName: ${server.Name}`
+      button.title = `Name: ${server.Name}`
     }
   }
 }
