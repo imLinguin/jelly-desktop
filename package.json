@@ -12,12 +12,15 @@
   },
   "keywords": [
     "Electron",
-    "Jellyfin"
+    "Jelly Desktop",
+    "Jellyfin",
+    "Jellyfin Desktop"
   ],
   "author": {
-    "name": "Paweł Lidwin",
+    "name": "Paweł Lidwin, Olek Baran, Konrad Zwierzchowski",
     "email": "lidwinpawel@gmail.com"
   },
+  "homepage": "https://github.com/imLinguin/jelly-desktop",
   "license": "GPL-3.0",
   "devDependencies": {
     "@types/node": "^16.3.1",
@@ -30,8 +33,7 @@
     "electron-settings": "^4.0.2"
   },
   "build": {
-    "appId": "linguin.jd",
-    "productName": "Jellyfin Desktop",
+    "productName": "Jelly Desktop",
     "files": [
       "./build/*.js",
       "./src/page/*",
@@ -40,16 +42,61 @@
     "directories": {
       "buildResources": "./images/*"
     },
-    "icon": "images/favicon.png",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "${name}-win-${version}.${ext}",
+      "icon": "images/favicon.png"
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.entertainment",
+      "icon": "images/favicon.png"
+    },
+    "dmg": {
+      "background": "images/dmg.png",
+      "artifactName": "${name}-mac-${version}.${ext}",
+      "window": {
+        "width": "600",
+        "height": "500"
+      },
+      "contents": [
+        {
+          "x": 10,
+          "y": 215,
+          "type": "file"
+        },
+        {
+          "x": 420,
+          "y": 215,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "nsis": {
+      "deleteAppDataOnUninstall": true
+    },
     "linux": {
       "target": [
-        "AppImage",
-        "deb"
+        "deb",
+        "AppImage"
       ],
-      "category": "Network"
+      "maintainer": "Paweł Lidwin, Olek Baran, Konrad Zwierzchowski",
+      "icon": "images/favicon.png"
     },
     "appImage": {
-      "artifactName": "JellyDesktop-${version}.${ext}"
+      "synopsis": "Simple community made desktop client for Jellyfin",
+      "category": "AudioVideo",
+      "artifactName": "${name}-appimage-${version}.${ext}"
+    },
+    "deb": {
+      "synopsis": "Simple community made desktop client for Jellyfin",
+      "category": "AudioVideo",
+      "artifactName": "${name}-deb-${version}.${ext}"
     }
   }
 }
