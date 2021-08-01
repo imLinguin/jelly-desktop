@@ -68,7 +68,6 @@ app.whenReady().then(() => {
         await discovery(3000).then(val=>{
             execJS(`createDiscovery(${val})`)
         })
-        
     })
 })
 

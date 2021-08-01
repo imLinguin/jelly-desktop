@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;1,700&display=swap');
 
+body::-webkit-scrollbar {
+  width: 0.4em;
+  height: 0.4em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #242424
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888888;
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-corner {
+  background-color: #242424
+}
+
 body {
   background-color: #101010;
   margin: 0;
