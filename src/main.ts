@@ -18,9 +18,11 @@ function allWindowsClosed() {
 
 function createMainWindow(): void {
     window = new BrowserWindow({
-        title: "Jellyfin Desktop",
+        title: "Jelly Desktop",
         width: 1000,
         height: 600,
+        minWidth: 500,
+        minHeight: 54,
         resizable: true,
         minimizable: true,
         frame: true,
