@@ -48,15 +48,19 @@ function createDiscovery(servers) {
     console.log(server);
     let button = document.createElement("button");
     let text = document.createElement("h2");
-    button.innerText = server.Address.replace(/http(s)?\:\/\//,"")
-    button.id = "button-text"
+    button.id = "discovery-button"
     button.onclick = (e)=>{
       let text = server.Address;
       const arr = text.split(":")
       setInputs(arr[0]+":"+arr[1],arr[2])
     }
-    div.appendChild(button)
+    div.appendChild(button);
     div2.appendChild(text);
+
+    let pIP = document.createElement('p');
+    pIP.id = 'discovery-button-text';
+    pIP.innerHTML = server.Address.replace(/http(s)?\:\/\//,"");
+    document.getElementById("discovery-button").appendChild(pIP);
 
     if (navigator.language == "pl") {
       document.querySelector("h2").innerHTML = "Wybierz z listy:";

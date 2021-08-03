@@ -153,18 +153,28 @@ input {
   width: 40%;
   margin-top: 5px;
   background-color: rgb(0, 66, 88);
-  color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
   transition: 0.5s;
 }
 
-#discovery-container > button:hover {
+#discovery-button {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#discovery-button:hover {
   background-color: #00A4DC;
-  color: white
+  color: white;
 }
 
 #button-text {
   color: white;
+}
+
+#button-text, #discovery-button-text {
   font-size: 15px;
   font-weight: 700;
+}
+
+#discovery-button-text {
+  font-weight: 400;
 }
