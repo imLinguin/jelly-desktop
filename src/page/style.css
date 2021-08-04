@@ -4,6 +4,7 @@
   /* Texts */
   --white07: rgba(255, 255, 255, 0.7);
   --white08: rgba(255, 255, 255, 0.8);
+  --error: #FF6969;
 
   /* Inputs */
   --inputBackground: #292929;
@@ -191,6 +192,7 @@ input {
 
 #button-text {
   color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 #button-text, #discovery-button-text {
@@ -201,4 +203,12 @@ input {
 #discovery-button-text {
   font-weight: 400;
   padding: 0 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+#error-text {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--error);
 }
