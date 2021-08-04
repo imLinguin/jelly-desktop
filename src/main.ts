@@ -66,7 +66,7 @@ app.whenReady().then(() => {
     window.removeMenu()
     window.once('ready-to-show', async () => {
         window.show()
-        window.webContents.openDevTools({ mode: "detach" })
+        //window.webContents.openDevTools({ mode: "detach" })
         await discovery(3000).then(val=>{
             execJS(`createDiscovery(${val})`)
         })
