@@ -1,5 +1,5 @@
 function openWebsite() {
-  require("electron").shell.openExternal("https://jellyfin.org");
+  require("electron").shell.openExternal("https://github.com/imLinguin/jelly-desktop");
 }
 
 if (navigator.language == "pl") {
