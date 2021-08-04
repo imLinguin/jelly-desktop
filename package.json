@@ -46,7 +46,7 @@
       "target": [
         "nsis"
       ],
-      "artifactName": "${name}-win-${version}.${ext}",
+      "artifactName": "${name}-${version}.${ext}",
       "icon": "images/favicon.png"
     },
     "mac": {
@@ -58,7 +58,7 @@
     },
     "dmg": {
       "background": "images/dmg.png",
-      "artifactName": "${name}-mac-${version}.${ext}",
+      "artifactName": "${name}-${version}.${ext}",
       "window": {
         "width": "600",
         "height": "500"
@@ -91,12 +91,12 @@
     "appImage": {
       "synopsis": "Simple community made desktop client for Jellyfin",
       "category": "AudioVideo",
-      "artifactName": "${name}-appimage-${version}.${ext}"
+      "artifactName": "${name}-${version}.${ext}"
     },
     "deb": {
       "synopsis": "Simple community made desktop client for Jellyfin",
       "category": "AudioVideo",
-      "artifactName": "${name}-deb-${version}.${ext}"
+      "artifactName": "${name}-${version}.${ext}"
     }
   }
 }
