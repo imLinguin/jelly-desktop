@@ -83,18 +83,12 @@
     "linux": {
       "target": [
         "deb",
-        "AppImage"
+        "AppImage",
+        "rpm"
       ],
       "maintainer": "Paweł Lidwin, Olek Baran, Konrad Zwierzchowski",
-      "icon": "images/favicon.png"
-    },
-    "appImage": {
-      "synopsis": "Simple community made desktop client for Jellyfin",
-      "category": "AudioVideo",
-      "artifactName": "${name}-${version}.${ext}"
-    },
-    "deb": {
-      "synopsis": "Simple community made desktop client for Jellyfin",
+      "icon": "images/favicon.png",
+      "synopsis": "Jellyfin Client",
       "category": "AudioVideo",
       "artifactName": "${name}-${version}.${ext}"
     }
