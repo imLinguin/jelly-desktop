@@ -84,7 +84,8 @@
       "target": [
         "deb",
         "AppImage",
-        "rpm"
+        "rpm",
+        "pacman"
       ],
       "maintainer": "Paweł Lidwin, Olek Baran, Konrad Zwierzchowski",
       "icon": "images/favicon.icns",
