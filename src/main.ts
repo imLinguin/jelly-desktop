@@ -26,7 +26,7 @@ function createMainWindow(): void {
         resizable: true,
         minimizable: true,
         frame: true,
-        icon: path.join('images','favicon.png'),
+        icon: path.join(__dirname, "../images/favicon.png"),
         autoHideMenuBar: true,
         backgroundColor: "#101010",
         webPreferences: {
