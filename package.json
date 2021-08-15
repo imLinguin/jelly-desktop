@@ -1,38 +1,26 @@
 {
   "name": "jelly-desktop",
   "version": "1.0.0",
-  "description": "Simple community made desktop client for Jellyfin",
   "main": "build/main.js",
-  "scripts": {
-    "start": "run-s build:ts start:electron",
-    "start:electron": "electron build/main.js",
-    "build": "run-s build:ts build:electron",
-    "build:ts": "tsc -b src/",
-    "build:electron": "electron-builder"
+  "license": "GPL-3.0",
+  "description": "Simple community made desktop client for Jellyfin",
+  "repository": {
+    "type": "Github",
+    "url": "https://github.com/imLinguin/jelly-desktop"
   },
-  "keywords": [
-    "Electron",
-    "Jelly Desktop",
-    "Jellyfin",
-    "Jellyfin Desktop"
-  ],
   "author": {
     "name": "Paweł Lidwin, Olek Baran, Konrad Zwierzchowski",
     "email": "lidwinpawel@gmail.com"
   },
-  "homepage": "https://github.com/imLinguin/jelly-desktop",
-  "license": "GPL-3.0",
-  "devDependencies": {
-    "@types/node": "^16.3.1",
-    "electron": "^13.1.6",
-    "electron-builder": "^22.9.1",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^4.3.5"
-  },
-  "dependencies": {
-    "electron-settings": "^4.0.2"
-  },
+  "keywords": [
+    "Jelly Desktop",
+    "Jelly",
+    "Jellyfin",
+    "Jellyfin Desktop",
+    "Electron"
+  ],
   "build": {
+    "appId": "com.electron.jelly",
     "productName": "Jelly Desktop",
     "files": [
       "./build/*.js",
@@ -47,14 +35,17 @@
         "nsis"
       ],
       "artifactName": "${name}-${version}.${ext}",
-      "icon": "images/favicon.png"
+      "icon": "images/favicon.ico"
+    },
+    "nsis": {
+      "deleteAppDataOnUninstall": true
     },
     "mac": {
       "target": [
         "dmg"
       ],
       "category": "public.app-category.entertainment",
-      "icon": "images/favicon.png"
+      "icon": "images/favicon.icns"
     },
     "dmg": {
       "background": "images/dmg.png",
@@ -77,21 +68,37 @@
         }
       ]
     },
-    "nsis": {
-      "deleteAppDataOnUninstall": true
-    },
     "linux": {
-      "target": [
-        "deb",
-        "AppImage",
-        "rpm",
-        "pacman"
-      ],
-      "maintainer": "Paweł Lidwin, Olek Baran, Konrad Zwierzchowski",
+      "category": "AudioVideo",
       "icon": "images/favicon.icns",
       "synopsis": "Jellyfin Client",
-      "category": "AudioVideo",
-      "artifactName": "${name}-${version}.${ext}"
+      "artifactName": "${name}-${version}.${ext}",
+      "desktop": {
+        "Name": "Jelly Desktop"
+      },
+      "target": [
+        "deb",
+        "rpm",
+        "pacman",
+        "AppImage"
+      ]
     }
+  },
+  "dependencies": {
+    "electron-settings": "^4.0.2"
+  },
+  "scripts": {
+    "start": "run-s build:ts start:electron",
+    "start:electron": "electron build/main.js",
+    "build": "run-s build:ts build:electron",
+    "build:ts": "tsc -b src/",
+    "build:electron": "electron-builder"
+  },
+  "devDependencies": {
+    "@types/node": "^16.3.1",
+    "electron": "^13.1.6",
+    "electron-builder": "^22.11.7",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.3.5"
   }
 }

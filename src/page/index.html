@@ -23,7 +23,7 @@
         <input type="url" name="url" id="url" />
         <div class="colon">:</div>
         <label for="port" class="port-label">Port:</label>
-        <input type="number" name="port" id="port" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" />
+        <input type="number" name="port" id="port" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="5" />
       </div>
       <div id="error-container"></div>
       <button id="connect-button" onclick="connectToServer()">
