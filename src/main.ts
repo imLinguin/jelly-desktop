@@ -71,9 +71,8 @@ app.whenReady().then(() => {
             execJS(`createDiscovery(${val})`)
         })
     })
+    window.on("close", allWindowsClosed)
 })
-
-app.on("window-all-closed", allWindowsClosed)
 
 ipcMain.on("connect", (e, url: string) => {
     require("electron-settings").setSync("address", url);
