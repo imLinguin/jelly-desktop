@@ -35,7 +35,7 @@
         "nsis"
       ],
       "artifactName": "${name}-${version}.${ext}",
-      "icon": "images/favicon.ico"
+      "icon": "images/icon.ico"
     },
     "nsis": {
       "deleteAppDataOnUninstall": true
@@ -45,7 +45,7 @@
         "dmg"
       ],
       "category": "public.app-category.entertainment",
-      "icon": "images/favicon.icns"
+      "icon": "images/icon.icns"
     },
     "dmg": {
       "background": "images/dmg.png",
@@ -70,7 +70,7 @@
     },
     "linux": {
       "category": "AudioVideo",
-      "icon": "images/favicon.icns",
+      "icon": "images/icon.icns",
       "synopsis": "Jellyfin Client",
       "artifactName": "${name}-${version}.${ext}",
       "desktop": {
