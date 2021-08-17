@@ -6,7 +6,7 @@
 
 ---
 
-<br><br>
+<br>
 
 # **Description**
 
@@ -32,13 +32,11 @@ During the first run, the program will ask the user for the IP address, port and
 
 TODO
 
-<br><br>
+<br>
 
 # **Installation**
 
 Below is a step by step installation process for different operating systems (and Linux distros).
-
-Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically updated.
 
 <br>
 
@@ -52,11 +50,55 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 
 ### **Linux**
 - `.deb`
+  1. Download the file with the `.deb` extension from the latest [Release](https://github.com/imLinguin/jelly-desktop/releases/latest).
+  2. Install the package using the command:
+     ```
+     $ sudo dpkg -i ./file-name.deb
+     ```
+
+<br>
+
 - `.rpm`
+  1. Download the file with the `.rpm` extension from the latest [Release](https://github.com/imLinguin/jelly-desktop/releases/latest).
+  2. Install the package using the command:
+     ```
+     $ sudo rpm -i ./file-name.rpm
+     ```
+
+<br>
+
 - `.pacman`
+  1. Download the file with the `.pacman` extension from the latest [Release](https://github.com/imLinguin/jelly-desktop/releases/latest).
+  2. Install the package using the command:
+     ```
+     $ sudo pacman -U ./file-name.pacman
+     ```
+
+<br>
+
 - `.AppImage`
+  1. Download and install [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher) from the latest [Release](https://github.com/TheAssassin/AppImageLauncher/releases/latest).
+  2. Download the file with the `.AppImage` extension from the latest [Release](https://github.com/imLinguin/jelly-desktop/releases/latest).
+  3. Run the file downloaded in the second step and click the **Integrate and run** button.
+
+<br>
+
 - `apt`
-- `AUR`
+  - Install the package using the commands below:
+     ```
+     $ sudo add-apt-repository ppa:imLinguin/jelly-desktop
+     ```
+     ```
+     $ sudo apt update
+     ```
+     ```
+     $ sudo apt install jelly-desktop
+     ```
+
+<br>
+
+- `AUR (Arch User Repository)`
+  - https://aur.archlinux.org/packages/jelly-desktop/
 
 <br>
 
@@ -66,18 +108,24 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 3. Move the Jelly Desktop icon to the Applications folder icon.
 4. Before starting, check any [problems](#known-issues) that may occur.
 
-<br><br>
+<br>
+
+# **Updating**
+
+Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically updated.
+
+<br>
 
 # **Contributing**
 
-<br><br>
+<br>
 
 # **Known Issues**
 
-<br><br>
+<br>
 
 # **Authors**
 
-<br><br>
+<br>
 
 # **Screenshots**
