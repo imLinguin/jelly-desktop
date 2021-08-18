@@ -101,9 +101,9 @@
     "build": "run-s build:ts build:electron",
     "build:ts": "tsc -b src/",
     "build:electron": "electron-builder",
-    "publish:linux": "GH_TOKEN='${{ secrets.WORKFLOW_TOKEN }}' electron-builder -l -p always",
+    "publish:linux": "electron-builder -l -p always",
     "publish:windows": "electron-builder -w -p always",
-    "publish:mac": "GH_TOKEN='${{ secrets.WORKFLOW_TOKEN }}' electron-builder -m -p always"
+    "publish:mac": "electron-builder -m -p always"
   },
   "devDependencies": {
     "@types/node": "^16.3.1",
