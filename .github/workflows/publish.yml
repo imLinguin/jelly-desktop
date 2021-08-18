@@ -24,7 +24,7 @@ jobs:
       - run: yarn run publish:linux
         name: Build and publish
         env:
-          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   windows:
     runs-on: windows-latest
     steps:
@@ -40,7 +40,7 @@ jobs:
       - run: yarn run publish:windows
         name: Build and publish
         env:
-          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   mac:
     runs-on: macos-latest
     steps:
@@ -56,4 +56,4 @@ jobs:
       - run: yarn publish:mac
         name: Build and publish
         env:
-          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
