@@ -15,28 +15,16 @@ Jelly Desktop is an improved alternative to [Jellyfin Desktop](https://github.co
 <br>
 
 ### **Technologies used**
-
 Like its older counterpart, Jelly Desktop was created using [ElectronJS](https://www.electronjs.org/). We used [electron-builder](https://www.npmjs.com/package/electron-builder) to build the app, and the [electron-updater](https://www.npmjs.com/package/electron-updater) for automatic updates.
-
-We also used pure CSS in it. The app is fully responsive and has a consistent design with the Jellyfin browser version.
-
 <br>
-
-### **General operations of the app**
-
-During the first run, the program will ask the user for the IP address, port and display all servers with Jellyfin in the local network. After the connection is established, the data will be saved and the user won't have to enter it again the next time the app is started.
-
-<br>
-
-### **Searching for the servers in the LAN**
-
-TODO
+The app is fully responsive and has a consistent design with the Jellyfin browser version.
 
 <br>
 
 # **Installation**
 
-Below is a step by step installation process for different operating systems (and Linux distros).
+Below is a step by step installation process for different operating systems (and Linux distros). <br>
+Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically updated.
 
 <br>
 
@@ -110,22 +98,7 @@ Below is a step by step installation process for different operating systems (an
 
 <br>
 
-# **Updating**
-
-Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically updated.
-
-<br>
-
-# **Contributing**
-
-<br>
-
-# **Known Issues**
-
-<br>
-
 # **Authors**
-
-<br>
-
-# **Screenshots**
+- Paweł Lidwin - [@imLinguin](https://github.com/imLinguin)
+- Olek Baran - [@olek-arsee](https://github.com/olek-arsee)
+- Konrad Zwierzchowski - [@OnlyPlayy](https://github.com/OnlyPlayy)
