@@ -32,7 +32,6 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 1. Download the file with the `.exe` extension from the latest [Release](https://github.com/imLinguin/jelly-desktop/releases/latest).
 2. Run the installer.
 3. Installation requires no user interaction or administrator privileges.
-4. Before starting, check any [problems](#known-issues) that may occur.
 
 <br>
 
@@ -94,7 +93,6 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 1. Download the file with the `.dmg` extension from the latest [Release](https://github.com/imLinguin/jelly-desktop/releases/latest).
 2. Run the installer.
 3. Move the Jelly Desktop icon to the Applications folder icon.
-4. Before starting, check any [problems](#known-issues) that may occur.
 
 <br>
 
