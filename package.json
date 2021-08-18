@@ -30,6 +30,13 @@
     "directories": {
       "buildResources": "./images/*"
     },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "imLinguin",
+        "repo": "jelly-desktop"
+      }
+    ],
     "win": {
       "target": [
         "nsis"
@@ -85,14 +92,17 @@
     }
   },
   "dependencies": {
-    "electron-settings": "^4.0.2"
+    "electron-settings": "^4.0.2",
+    "electron-updater": "^4.3.9"
   },
   "scripts": {
     "start": "run-s build:ts start:electron",
     "start:electron": "electron build/main.js",
     "build": "run-s build:ts build:electron",
     "build:ts": "tsc -b src/",
-    "build:electron": "electron-builder"
+    "build:electron": "electron-builder",
+    "publish:linux": "electron-builder -l -p always",
+    "publish:windows": "electron-builder -w -p always"
   },
   "devDependencies": {
     "@types/node": "^16.3.1",

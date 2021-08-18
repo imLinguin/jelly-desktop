@@ -3,6 +3,7 @@ import * as settings from "electron-settings"
 import * as path from "path"
 import discovery from "./discovery"
 import { exec } from "child_process"
+import { checkForUpdates } from "./updater"
 let window: BrowserWindow;
 let child_processes = []
 const isWindows = process.platform === "win32"
@@ -63,6 +64,7 @@ function loadLandingPage() {
 app.whenReady().then(() => {
     createMainWindow()
     loadLandingPage()
+    checkForUpdates()
     window.removeMenu()
     window.once('ready-to-show', async () => {
         window.show()
