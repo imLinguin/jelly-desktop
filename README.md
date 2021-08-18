@@ -96,6 +96,16 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 
 <br>
 
+# **Known Issues**
+- ### **macOS**
+  - When Jelly Desktop is launched for the first time, the system displays a window (screenshot below) that prevents the app from opening. To fix it, go to:
+  <br>
+  `System Preferences => Security & Privacy => General`
+  <br>
+  When opening the program, you'll be presented with the option `Open Anyway`, which you must select to use our project. Then you only need to confirm by clicking the `Open` button. This problem only occurs after installation and is caused by missing Apple certificate.
+
+<br>
+
 # **Authors**
 - Paweł Lidwin - [@imLinguin](https://github.com/imLinguin)
 - Olek Baran - [@olek-arsee](https://github.com/olek-arsee)
