@@ -19,7 +19,7 @@ jobs:
           node-version: 'v14'
       - run: yarn install
         name: Install dependencies
-      - run: yarn publish
+      - run: yarn run publish:linux
         name: Build and publish
   windows:
     runs-on: windows-latest
@@ -31,7 +31,7 @@ jobs:
           node-version: 'v14'
       - run: yarn install
         name: Install dependencies
-      - run: yarn publish:windows
+      - run: yarn run publish:windows
         name: Build and publish
   mac:
     runs-on: macos-latest
