@@ -73,7 +73,7 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 - `apt`
   - Install the package using the commands below:
      ```
-     $ sudo add-apt-repository ppa:imLinguin/jelly-desktop
+     $ sudo add-apt-repository ppa:linguin/jelly-desktop
      ```
      ```
      $ sudo apt update
