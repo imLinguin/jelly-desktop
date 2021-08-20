@@ -70,20 +70,6 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 
 <br>
 
-- `apt`
-  - Install the package using the commands below:
-     ```
-     $ sudo add-apt-repository ppa:linguin/jelly-desktop
-     ```
-     ```
-     $ sudo apt update
-     ```
-     ```
-     $ sudo apt install jelly-desktop
-     ```
-
-<br>
-
 - `AUR (Arch User Repository)`
   - https://aur.archlinux.org/packages/jelly-desktop/
 
