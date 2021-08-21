@@ -5,6 +5,7 @@ import discovery from "./discovery"
 import { exec } from "child_process"
 import { checkForUpdates } from "./updater"
 let window: BrowserWindow;
+let openingMediaPlayerWindow: BrowserWindow;
 let child_processes = []
 const isWindows = process.platform === "win32"
 const isLinux = process.platform === "linux"
@@ -37,6 +38,28 @@ function createMainWindow(): void {
             backgroundThrottling: false
         }
     })
+}
+
+function createopeningMediaPlayerWindow(): void {
+    openingMediaPlayerWindow = new BrowserWindow({
+        title: "Jelly Desktop",
+        width: 550,
+        height: 350,
+        resizable: false,
+        minimizable: false,
+        frame: true,
+        icon: path.join(__dirname, "../images/icon.png"),
+        autoHideMenuBar: true,
+        backgroundColor: "#101010",
+        webPreferences: {
+            nodeIntegration: true,
+            devTools: true,
+            contextIsolation: false,
+            backgroundThrottling: false
+        }
+    })
+    openingMediaPlayerWindow.loadFile(path.join(__dirname, "..", "src", "openingMediaPlayer", "mediaPlayer.html"));
+    openingMediaPlayerWindow.setMenuBarVisibility(false);
 }
 
 function clipboardCatcher() {
@@ -92,5 +115,5 @@ ipcMain.on("connect", (e, url: string) => {
 })
 ipcMain.on("openplayer", (e, cmd: string) => {
     if (cmd.match(/Download\?api_key=/))
-        child_processes.push(exec(`vlc ${cmd}`))
+        createopeningMediaPlayerWindow()
 })
