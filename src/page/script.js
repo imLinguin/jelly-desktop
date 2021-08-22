@@ -18,11 +18,20 @@ if (navigator.language == "pl") {
 
 const urlInput = document.getElementById("url");
 const portInput = document.getElementById("port");
+const httpRegex = /http[s]?:\/\//
 
-function setInputs(url, port) {
-  console.log(url, port);
+urlInput.addEventListener("input", (e)=>{
+  if(!e.inputType == 'input')
+    return
+  if(urlInput.value.match(/https:\/\//)) {
+    portInput.value = '443'
+  }
+})
+
+function setInputs(ip, port) {
+  console.log(ip, port);
   if (url) {
-    urlInput.value = url;
+    urlInput.value = ip;
     portInput.value = port || 8096;
   } else {
     portInput.value = 8096;
@@ -33,7 +42,7 @@ function connectToServer() {
   let ip = urlInput.value;
   let port = portInput.value;
 
-  if (!ip.match(/http[s]?:\/\//) || !ip || !port) {
+  if (!ip.match(httpRegex) || !ip || !port) {
     urlInput.style.border = "solid 2px #FF6969";
     portInput.style.border = "solid 2px #FF6969";
     document.querySelector(".url-label").style.color = "#FF6969";
@@ -51,10 +60,21 @@ function connectToServer() {
     }, 2700);
     return;
   }
+  url = craftURL(ip, port)
+  require("electron").ipcRenderer.send("connect", url, ip, port);
+}
 
-  const tmpurl = `${ip}:${port}`;
-
-  require("electron").ipcRenderer.send("connect", tmpurl);
+function craftURL(ip, port) {
+  // Allows to use ports in domain names
+  let url = ""
+  let slashPos = ip.indexOf("/", 8)
+  if (slashPos > 0){
+    url = ip.slice(0, slashPos) + `:${port}` + ip.slice(slashPos)
+  }
+  else{
+    url = `${ip}:${port}`
+  }
+  return url
 }
 
 function clearError() {

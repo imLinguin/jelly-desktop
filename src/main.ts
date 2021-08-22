@@ -6,12 +6,11 @@ import { exec } from "child_process"
 import { checkForUpdates } from "./updater"
 let window: BrowserWindow;
 let openingMediaPlayerWindow: BrowserWindow;
-let child_processes = []
 const isWindows = process.platform === "win32"
 const isLinux = process.platform === "linux"
 const isMac = process.platform === "darwin"
 
-function allWindowsClosed() {
+function allWindowsClosed():void {
     if (!isMac) {
         app.quit()
     }
@@ -39,9 +38,9 @@ function createMainWindow(): void {
     })
 }
 
-function createopeningMediaPlayerWindow(): void {
+function createopeningMediaPlayerWindow(playerCommand:string, url:string): void {
     openingMediaPlayerWindow = new BrowserWindow({
-        title: "Jelly Desktop",
+        title: "Open Player",
         width: 600,
         height: 350,
         resizable: false,
@@ -59,9 +58,18 @@ function createopeningMediaPlayerWindow(): void {
     })
     openingMediaPlayerWindow.loadFile(path.join(__dirname, "..", "src", "openingMediaPlayer", "mediaPlayer.html"));
     openingMediaPlayerWindow.setMenuBarVisibility(false);
+    openingMediaPlayerWindow.once('ready-to-show', () => {
+        openingMediaPlayerWindow.webContents.openDevTools({ mode: "detach" })
+    })
+    openingMediaPlayerWindow.webContents.once('did-finish-load', ()=>{
+        openingMediaPlayerWindow.webContents.executeJavaScript(
+            `window.plrCommand="${playerCommand}";window.mediaURL="${url}";updateInputData()`
+            )
+    })
 }
 
-function clipboardCatcher() {
+function clipboardCatcher():void {
+    console.log("Injecting clipboard event catcher")
     execJS("document.addEventListener('copy', function(e){ require('electron').ipcRenderer.send('openplayer',window.getSelection().toString()) })")
 }
 
@@ -75,11 +83,9 @@ function execJS(cmd: string): void {
 function loadLandingPage() {
     let fpath = path.join(__dirname, "..", "src", "page", "index.html")
     window.loadFile(fpath)
-    const ServerUrl = settings.hasSync("address") ? settings.getSync("address") : ""
-    const urlarr = ServerUrl.toString().split(":");
-    let port = urlarr[2];
-    let url = urlarr[1] ? "http://" + urlarr[1].slice(2, urlarr[1].length): "";
-    let cmd = `window.ServerUrl = "${ServerUrl}"; setInputs("${url.toString()}", ${port});`
+    const IP = settings.hasSync("address.ip") ? settings.getSync("address.ip") : ""
+    const Port = settings.hasSync("address.port") ? settings.getSync("address.port") : ""
+    let cmd = `setInputs("${IP}", ${Port});`
     execJS(cmd)
 }
 
@@ -90,7 +96,7 @@ app.whenReady().then(() => {
     window.removeMenu()
     window.once('ready-to-show', async () => {
         window.show()
-        //window.webContents.openDevTools({ mode: "detach" })
+        window.webContents.openDevTools({ mode: "detach" })
         startDiscovery()
     })
     window.on("close", allWindowsClosed)
@@ -103,11 +109,12 @@ async function startDiscovery() {
     })
 }
 
-ipcMain.on("connect", (e, url: string) => {
+ipcMain.on("connect", (e, url: string, ip:string, port:string) => {
     if (window && !window.webContents.isLoading()) {
-        window.loadURL(url).then(() => {
+        window.loadURL(url).finally(() => {
             clipboardCatcher()
-            settings.setSync("address", url);
+            settings.setSync("address.ip", ip);
+            settings.setSync("address.port", port)
         }).catch(e => {
             dialog.showMessageBox(window, {
                 message: "Error loading URL, check your connection",
@@ -120,8 +127,21 @@ ipcMain.on("connect", (e, url: string) => {
     }
 })
 
-ipcMain.on("openplayer", (e, cmd: string) => {
-    if (cmd.match(/Download\?api_key=/)) {
-        createopeningMediaPlayerWindow()
+ipcMain.on("openplayer", (e, url: string) => {
+    if (url.match(/Download\?api_key=/)) {
+        let savedCommand = settings.hasSync("playerCommand") ? settings.getSync("playerCommand") : ""
+        createopeningMediaPlayerWindow(savedCommand.toString(), url)
     }
+})
+ipcMain.on("executePlayer", (e, args) => {
+    const command = `${args[0]} ${args[1]}`
+    exec(command, (error, stdout, stderr)=>{
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return;
+          }
+          console.log(`stdout: ${stdout}`);
+          console.error(`stderr: ${stderr}`);
+    })
+    openingMediaPlayerWindow.close()
 })

@@ -8,6 +8,17 @@ if (navigator.language == "pl") {
     document.getElementById("button-text").innerHTML = "Open";
 }
 
+const commandInput = document.getElementById("command")
+const urlInput = document.getElementById("url")
+
+function updateInputData(){
+    urlInput.value = window.mediaURL
+    commandInput.value = window.plrCommand
+}
+
 function openMediaPlayer() {
-    console.log("clicked")
+    if(!commandInput.value) {
+        return
+    }
+    require("electron").ipcRenderer.emit("executePlayer", [commandInput.value, urlInput.value])
 }
