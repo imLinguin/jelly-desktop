@@ -143,5 +143,6 @@ ipcMain.on("executePlayer", (e, args) => {
           console.log(`stdout: ${stdout}`);
           console.error(`stderr: ${stderr}`);
     })
+    settings.setSync("playerCommand", args[0])
     openingMediaPlayerWindow.close()
 })
