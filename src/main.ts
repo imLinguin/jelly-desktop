@@ -58,9 +58,6 @@ function createopeningMediaPlayerWindow(playerCommand:string, url:string): void 
     })
     openingMediaPlayerWindow.loadFile(path.join(__dirname, "..", "src", "openingMediaPlayer", "mediaPlayer.html"));
     openingMediaPlayerWindow.setMenuBarVisibility(false);
-    openingMediaPlayerWindow.once('ready-to-show', () => {
-        openingMediaPlayerWindow.webContents.openDevTools({ mode: "detach" })
-    })
     openingMediaPlayerWindow.webContents.once('did-finish-load', ()=>{
         openingMediaPlayerWindow.webContents.executeJavaScript(
             `window.plrCommand="${playerCommand}";window.mediaURL="${url}";updateInputData()`
@@ -96,7 +93,7 @@ app.whenReady().then(() => {
     window.removeMenu()
     window.once('ready-to-show', async () => {
         window.show()
-        window.webContents.openDevTools({ mode: "detach" })
+        //window.webContents.openDevTools({ mode: "detach" })
         startDiscovery()
     })
     window.on("close", allWindowsClosed)

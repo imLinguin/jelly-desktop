@@ -1,10 +1,16 @@
 if (navigator.language == "pl") {
     document.getElementById("heading-text").innerHTML = "Otwórz odtwarzacz";
     document.getElementById("command-label").innerHTML = "Polecenie startowe:"
+    document.getElementById("command").placeholder = "np. vlc"
+    document.getElementById("command").title = "Wypełnij to pole."
+    document.getElementById("url").title = "Wypełnij to pole."
     document.getElementById("button-text").innerHTML = "Otwórz";
 } else {
     document.getElementById("heading-text").innerHTML = "Open the Media Player";
     document.getElementById("command-label").innerHTML = "Startup command:";
+    document.getElementById("command").placeholder = "e.g. vlc"
+    document.getElementById("command").title = "Fill in this field."
+    document.getElementById("url").title = "Fill in this field."
     document.getElementById("button-text").innerHTML = "Open";
 }
 
