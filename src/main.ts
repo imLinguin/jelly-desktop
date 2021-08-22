@@ -133,6 +133,7 @@ ipcMain.on("openplayer", (e, url: string) => {
         createopeningMediaPlayerWindow(savedCommand.toString(), url)
     }
 })
+
 ipcMain.on("executePlayer", (e, args) => {
     const command = `${args[0]} ${args[1]}`
     exec(command, (error, stdout, stderr)=>{

@@ -20,5 +20,5 @@ function openMediaPlayer() {
     if(!commandInput.value) {
         return
     }
-    require("electron").ipcRenderer.emit("executePlayer", [commandInput.value, urlInput.value])
+    require("electron").ipcRenderer.send("executePlayer", [commandInput.value, urlInput.value])
 }
