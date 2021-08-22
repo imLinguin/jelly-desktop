@@ -11,7 +11,6 @@ const isWindows = process.platform === "win32"
 const isLinux = process.platform === "linux"
 const isMac = process.platform === "darwin"
 
-
 function allWindowsClosed() {
     if (!isMac) {
         app.quit()
@@ -91,14 +90,18 @@ app.whenReady().then(() => {
     window.removeMenu()
     window.once('ready-to-show', async () => {
         window.show()
-        window.webContents.openDevTools({ mode: "detach" })
-        await discovery(3000).then(val=>{
-            if (window.webContents.getURL().startsWith('file'))
-                execJS(`createDiscovery(${val})`)
-        })
+        //window.webContents.openDevTools({ mode: "detach" })
+        startDiscovery()
     })
     window.on("close", allWindowsClosed)
 })
+
+async function startDiscovery() {
+    await discovery(3000).then(val=>{
+        if (window.webContents.getURL().startsWith('file'))
+            execJS(`createDiscovery(${val})`)
+    })
+}
 
 ipcMain.on("connect", (e, url: string) => {
     if (window && !window.webContents.isLoading()) {
@@ -111,6 +114,7 @@ ipcMain.on("connect", (e, url: string) => {
                 buttons: ["Ok"],
             }).then(()=>{
                 loadLandingPage()
+                startDiscovery()
             })
         })
     }

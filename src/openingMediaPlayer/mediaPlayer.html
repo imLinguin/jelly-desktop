@@ -14,17 +14,21 @@
   </head>
   <body>
     <main>
+      <div class="heading-wrapper">
         <h1 id="heading-text"></h1>
-        <div id="inputs">
-            <label for="command" id="command-label"></label>
-            <input type="text" name="command" id="command" />
-            <label for="url" class="url-label">URL:</label>
-            <input type="url" name="url" id="url" />
-        </div>
-        <div id="error-container"></div>
+      </div>
+      <div id="inputs">
+        <label for="command" id="command-label"></label>
+        <input type="text" name="command" id="command" />
+        <label for="url" class="url-label">URL:</label>
+        <input type="url" name="url" id="url" />
+      </div>
+      <div id="error-wrapper"></div>
+      <div class="button-container">
         <button id="open-button" onclick="openMediaPlayer()">
-            <p id="button-text"></p>
+          <p id="button-text"></p>
         </button>
+      </div>
     </main>
   </body>
 </html>
