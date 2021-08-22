@@ -43,7 +43,7 @@ function createMainWindow(): void {
 function createopeningMediaPlayerWindow(): void {
     openingMediaPlayerWindow = new BrowserWindow({
         title: "Jelly Desktop",
-        width: 550,
+        width: 600,
         height: 350,
         resizable: false,
         minimizable: false,
@@ -113,7 +113,9 @@ ipcMain.on("connect", (e, url: string) => {
         })
     }
 })
+
 ipcMain.on("openplayer", (e, cmd: string) => {
-    if (cmd.match(/Download\?api_key=/))
+    if (cmd.match(/Download\?api_key=/)) {
         createopeningMediaPlayerWindow()
+    }
 })
