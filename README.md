@@ -72,6 +72,7 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 
 - `AUR (Arch User Repository)`
   - https://aur.archlinux.org/packages/jelly-desktop/
+  - https://aur.archlinux.org/packages/jelly-desktop-bin/
 
 <br>
 
