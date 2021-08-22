@@ -63,7 +63,7 @@ function createopeningMediaPlayerWindow(): void {
 }
 
 function clipboardCatcher() {
-    window.webContents.executeJavaScript("document.addEventListener('copy', function(e){ require('electron').ipcRenderer.send('openplayer',window.getSelection().toString()) })")
+    execJS("document.addEventListener('copy', function(e){ require('electron').ipcRenderer.send('openplayer',window.getSelection().toString()) })")
 }
 
 
@@ -91,25 +91,27 @@ app.whenReady().then(() => {
     window.removeMenu()
     window.once('ready-to-show', async () => {
         window.show()
-        //window.webContents.openDevTools({ mode: "detach" })
+        window.webContents.openDevTools({ mode: "detach" })
         await discovery(3000).then(val=>{
-            execJS(`createDiscovery(${val})`)
+            if (window.webContents.getURL().startsWith('file'))
+                execJS(`createDiscovery(${val})`)
         })
     })
     window.on("close", allWindowsClosed)
 })
 
 ipcMain.on("connect", (e, url: string) => {
-    require("electron-settings").setSync("address", url);
-    if (window) {
+    if (window && !window.webContents.isLoading()) {
         window.loadURL(url).then(() => {
             clipboardCatcher()
+            settings.setSync("address", url);
         }).catch(e => {
             dialog.showMessageBox(window, {
                 message: "Error loading URL, check your connection",
                 buttons: ["Ok"],
+            }).then(()=>{
+                loadLandingPage()
             })
-            loadLandingPage()
         })
     }
 })
