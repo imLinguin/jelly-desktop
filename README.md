@@ -1,4 +1,4 @@
-<p align="center"><img src="images/logo.svg" width="300"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/74045117/130368822-a2b7c497-2064-4258-a894-30c309cfd616.png" width="300"></p>
 
 ---
 
@@ -72,6 +72,7 @@ Jelly Desktop installed from files: `.exe`, `.AppImage`, `.dmg` is automatically
 
 - `AUR (Arch User Repository)`
   - https://aur.archlinux.org/packages/jelly-desktop/
+  - https://aur.archlinux.org/packages/jelly-desktop-bin/
 
 <br>
 

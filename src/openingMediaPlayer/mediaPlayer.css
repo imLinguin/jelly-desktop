@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;1,700&display=swap');
+
+:root {
+  /* Texts */
+  --white07: rgba(255, 255, 255, 0.7);
+  --white08: rgba(255, 255, 255, 0.8);
+  --error: #FF6969;
+
+  /* Inputs */
+  --inputBackground: #292929;
+
+  /* Buttons */
+  --lightBlue: #00A4DC;
+
+  /* Backgrounds */
+  --header: #0a0a0a;
+  --body: #101010;
+}
+
+body {
+    background-color: var(--body);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.heading-wrapper, .button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+    color: var(--white08);
+    font-weight: 400;
+    font-size: 1.5em;
+    position: absolute;
+    top: 52px;
+}
+
+.inputs {
+    margin-top: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--inputBackground);
+    color: var(--white08);
+    font-size: 16px;
+    padding-left: 8px;
+    position: absolute;
+    top: 151px;
+}
+
+#command-label,
+.url-label {
+  color: var(--white07);
+  position: absolute;
+  top: 125px;
+}
+
+#command-label {
+  left: 36px;
+}
+
+.url-label {
+  right: 267px;
+}
+
+#command, #url {
+  border: solid 2px var(--inputBackground);
+}
+
+#command {
+  width: 212px;
+  left: 36px;
+}
+
+#url {
+  width: 252px;
+  right: 36px;
+}
+
+#command:focus, #url:focus {
+    border: solid 2px var(--lightBlue);
+}
+
+#open-button {
+  width: 528px;
+  height: 40px;
+  margin: 0;
+  position: absolute;
+  bottom: 77px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--lightBlue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#button-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
