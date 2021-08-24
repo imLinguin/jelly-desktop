@@ -66,10 +66,18 @@ function createopeningMediaPlayerWindow(playerCommand:string, url:string): void 
 }
 
 function clipboardCatcher():void {
-    console.log("Injecting clipboard event catcher")
+    console.debug("Injecting clipboard event catcher")
     execJS("document.addEventListener('copy', function(e){ require('electron').ipcRenderer.send('openplayer',window.getSelection().toString()) })")
 }
 
+function serverChooseButton():void{
+    console.debug('Adding Change Server button to login page')
+    const loginSelector = '#loginPage > div > div.readOnlyContent > button.raised.block.btnSelectServer.emby-button.hide'
+    const loggedSelector = '#myPreferencesMenuPage > div > div > div.userSection.verticalSection.verticalSection-extrabottompadding > a.selectServer.hide.listItem-border.emby-button'
+    // This basicly creates a interval for updating a login page
+    // That recreates Change Server button
+    execJS(`let timeout = setInterval(() => {const chooseServerButtonLogin = document.querySelector("${loginSelector}");const chooseServerButtonLogged = document.querySelector("${loggedSelector}");if (chooseServerButtonLogin) {const newButton = chooseServerButtonLogin.cloneNode(true);newButton.classList.remove("hide");newButton.addEventListener("click", (e) => {require("electron").ipcRenderer.send("loadLandingPage");});chooseServerButtonLogin.parentNode.replaceChild(newButton,chooseServerButtonLogin);}else if (chooseServerButtonLogged) {const newButton = chooseServerButtonLogged.cloneNode(true);newButton.classList.remove("hide");newButton.addEventListener("click", (e) => {require("electron").ipcRenderer.send("loadLandingPage");});chooseServerButtonLogged.parentNode.replaceChild(newButton,chooseServerButtonLogged);}}, 2000);`)
+}
 
 function execJS(cmd: string): void {
     if (window) {
@@ -110,6 +118,7 @@ ipcMain.on("connect", (e, url: string, ip:string, port:string) => {
     if (window && !window.webContents.isLoading()) {
         window.loadURL(url).finally(() => {
             clipboardCatcher()
+            serverChooseButton()
             settings.setSync("address.ip", ip);
             settings.setSync("address.port", port)
         }).catch(e => {
@@ -124,6 +133,10 @@ ipcMain.on("connect", (e, url: string, ip:string, port:string) => {
     }
 })
 
+ipcMain.on("loadLandingPage",(e)=>{
+    loadLandingPage()
+})
+
 ipcMain.on("openplayer", (e, url: string) => {
     if (url.match(/Download\?api_key=/)) {
         let savedCommand = settings.hasSync("playerCommand") ? settings.getSync("playerCommand") : ""
@@ -136,11 +149,13 @@ ipcMain.on("executePlayer", (e, args) => {
     exec(command, (error, stdout, stderr)=>{
         if (error) {
             console.error(`exec error: ${error}`);
+            dialog.showErrorBox("Execution Error", error.message)
+            openingMediaPlayerWindow.show()
             return;
-          }
-          console.log(`stdout: ${stdout}`);
-          console.error(`stderr: ${stderr}`);
+        }
+        console.log(`stdout: ${stdout}`);
+        console.error(`stderr: ${stderr}`);
     })
     settings.setSync("playerCommand", args[0])
-    openingMediaPlayerWindow.close()
+    openingMediaPlayerWindow.hide()
 })
