@@ -28,3 +28,10 @@ function openMediaPlayer() {
     }
     require("electron").ipcRenderer.send("executePlayer", [commandInput.value, urlInput.value])
 }
+
+commandInput.addEventListener("keypress", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("open-button").click();
+    }
+})

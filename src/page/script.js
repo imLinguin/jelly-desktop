@@ -117,3 +117,17 @@ function createDiscovery(servers) {
     }
   }
 }
+
+urlInput.addEventListener("keypress", function(event) {
+  if (event.keyCode === 13) {
+      event.preventDefault();
+      portInput.focus();
+  }
+})
+
+portInput.addEventListener("keypress", function(event) {
+  if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("connect-button").click();
+  }
+})
