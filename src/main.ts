@@ -92,6 +92,7 @@ function loadLandingPage() {
     const Port = settings.hasSync("address.port") ? settings.getSync("address.port") : ""
     let cmd = `setInputs("${IP}", ${Port});`
     execJS(cmd)
+    startDiscovery()
 }
 
 app.whenReady().then(() => {
@@ -102,7 +103,6 @@ app.whenReady().then(() => {
     window.once('ready-to-show', async () => {
         window.show()
         //window.webContents.openDevTools({ mode: "detach" })
-        startDiscovery()
     })
     window.on("close", allWindowsClosed)
 })
