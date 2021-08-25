@@ -25,7 +25,7 @@
     "files": [
       "./build/*.js",
       "./src/page/*",
-      "./src/openMediaPlayer/*",
+      "./src/openingMediaPlayer/*",
       "./images/*"
     ],
     "directories": {
